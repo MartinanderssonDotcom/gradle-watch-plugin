@@ -16,9 +16,6 @@ Usage
 
 To use the Watch plugin, include in your build script:
 
-Example 1. Using the Watch plugin
-
-build.gradle
 ~~~
 buildscript {
     repositories {
@@ -32,6 +29,7 @@ buildscript {
 apply plugin: 'watch'
 ~~~
 
+Then [configure](#configuration) at least one [`WatchTarget`](https://github.com/bluepapa32/gradle-watch-plugin/blob/master/src/main/java/com/bluepapa32/gradle/plugins/watch/WatchTarget.java).
 
 Tasks
 -----
@@ -45,8 +43,13 @@ Table 1. Watch plugin - tasks
 |watch           |-         |WatchTask|Run predefined tasks whenever watched file patterns are added, changed or deleted.|
 
 
-Configuration
+<a name="configuration"></a>Configuration
 -------------
+
+In order for the Watch plugin to be useful, at least one [`WatchTarget`](https://github.com/bluepapa32/gradle-watch-plugin/blob/master/src/main/java/com/bluepapa32/gradle/plugins/watch/WatchTarget.java) must be configured using arbitrary named domain objects.
+
+The watch target encapsulate which files or directories to watch and which tasks to execute when something has changed. For that, the watch target expose methods `files(`[`FileCollection`](http://gradle.org/docs/current/javadoc/org/gradle/api/file/FileCollection.html)`)` and `tasks(String...)`.  
+
 ~~~
 watch {
 
