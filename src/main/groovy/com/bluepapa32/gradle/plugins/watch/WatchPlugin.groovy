@@ -11,10 +11,6 @@ class WatchPlugin implements Plugin<Project> {
             project.extensions.create(name, WatchTarget, name)
         }
 
-        project.task('watchRun') << {
-            println 'Successfully started watcher.'
-        }
-
         project.task('watch', type: WatchTask) {
             watch project.watch
         }
